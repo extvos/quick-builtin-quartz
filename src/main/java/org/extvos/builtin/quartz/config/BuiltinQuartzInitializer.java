@@ -20,7 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 /**
- * @author shenmc
+ * @author Mingcai SHEN
  */
 @Component
 @Order(1)

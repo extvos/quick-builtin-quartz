@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * @author shenmc
+ * @author Mingcai SHEN
  */
 @ApiModel(value = "方法调用参数")
 @Data

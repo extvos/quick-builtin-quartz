@@ -30,7 +30,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * 参考人人开源，https://gitee.com/renrenio/renren-security
  * @author /
- * @date 2019-01-07
+ * 
  */
 @Async
 public class ExecutionJob extends QuartzJobBean {

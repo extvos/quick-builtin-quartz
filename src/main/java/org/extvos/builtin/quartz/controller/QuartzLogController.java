@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.Serializable;
 
 /**
- * @author shenmc
+ * @author Mingcai SHEN
  */
 @Slf4j
 @RestController

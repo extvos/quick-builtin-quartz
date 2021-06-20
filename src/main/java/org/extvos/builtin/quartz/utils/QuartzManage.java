@@ -28,8 +28,8 @@ import java.util.Date;
 import static org.quartz.TriggerBuilder.newTrigger;
 
 /**
- * @author Zheng Jie
- * @date 2019-01-07
+ * @author Mingcai SHEN
+ * 
  */
 @Slf4j
 @Component

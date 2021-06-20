@@ -3,7 +3,7 @@ package org.extvos.builtin.quartz.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author shenmc
+ * @author Mingcai SHEN
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

@@ -7,7 +7,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * @author shenmc
+ * @author Mingcai SHEN
  */
 @ApiModel(value = "BEAN方法")
 @Data

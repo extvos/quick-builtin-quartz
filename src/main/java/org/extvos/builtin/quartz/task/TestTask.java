@@ -21,8 +21,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 测试用
- * @author Zheng Jie
- * @date 2019-01-08
+ * @author Mingcai SHEN
  */
 @Slf4j
 @Component
