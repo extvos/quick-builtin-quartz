@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.extvos</groupId>
+    <groupId>io.github.extvos</groupId>
     <artifactId>quick-builtin-quartz</artifactId>
     <name>quick-builtin-quartz</name>
     <description>任务调度服务</description>
@@ -33,19 +33,19 @@
         </dependency>
 
         <dependency>
-            <groupId>org.extvos</groupId>
+            <groupId>io.github.extvos</groupId>
             <artifactId>quick-lib-restlet</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>org.extvos</groupId>
+            <groupId>io.github.extvos</groupId>
             <artifactId>quick-lib-common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>org.extvos</groupId>
+            <groupId>io.github.extvos</groupId>
             <artifactId>quick-lib-logging</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
