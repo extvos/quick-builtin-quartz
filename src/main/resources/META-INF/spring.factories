@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-org.extvos.builtin.quartz.config.BuiltinQuartzAutoConfigure
+plus.extvos.builtin.quartz.config.BuiltinQuartzAutoConfigure
