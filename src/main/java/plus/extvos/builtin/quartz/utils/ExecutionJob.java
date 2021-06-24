@@ -15,27 +15,29 @@
  */
 package plus.extvos.builtin.quartz.utils;
 
-import plus.extvos.builtin.quartz.mapper.QuartzLogMapper;
-import plus.extvos.builtin.quartz.service.QuartzJobService;
-import plus.extvos.restlet.utils.SpringContextHolder;
-import plus.extvos.builtin.quartz.entity.QuartzJob;
-import plus.extvos.builtin.quartz.entity.QuartzLog;
 import org.quartz.JobExecutionContext;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.quartz.QuartzJobBean;
+import plus.extvos.builtin.quartz.entity.QuartzJob;
+import plus.extvos.builtin.quartz.entity.QuartzLog;
+import plus.extvos.builtin.quartz.mapper.QuartzLogMapper;
+import plus.extvos.builtin.quartz.service.QuartzJobService;
+import plus.extvos.restlet.utils.SpringContextHolder;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 参考人人开源，https://gitee.com/renrenio/renren-security
+ *
  * @author /
- * 
  */
 @Async
 public class ExecutionJob extends QuartzJobBean {
 
-    /** 该处仅供参考 */
+    /**
+     * 该处仅供参考
+     */
     private final static ThreadPoolExecutor EXECUTOR = null;// = ThreadPoolExecutorUtil.getPoll();
 
     @Override
@@ -45,7 +47,7 @@ public class ExecutionJob extends QuartzJobBean {
         QuartzLogMapper quartzLogMapper = SpringContextHolder.getBean(QuartzLogMapper.class);
         QuartzJobService quartzJobService = SpringContextHolder.getBean(QuartzJobService.class);
 //        RedisUtils redisUtils = SpringContextHolder.getBean(RedisUtils.class);
-        
+
         String uuid = quartzJob.getUuid();
 
         QuartzLog log = new QuartzLog();
@@ -60,7 +62,7 @@ public class ExecutionJob extends QuartzJobBean {
             System.out.println("--------------------------------------------------------------");
             System.out.println("任务开始执行，任务名称：" + quartzJob.getJobName());
             QuartzRunnable task = new QuartzRunnable(quartzJob.getBeanName(), quartzJob.getMethodName(),
-                    quartzJob.getParams());
+                quartzJob.getParams());
             Future<?> future = EXECUTOR.submit(task);
             future.get();
             long times = System.currentTimeMillis() - startTime;
@@ -73,7 +75,7 @@ public class ExecutionJob extends QuartzJobBean {
             System.out.println("任务执行完毕，任务名称：" + quartzJob.getJobName() + ", 执行时间：" + times + "毫秒");
             System.out.println("--------------------------------------------------------------");
             // 判断是否存在子任务
-            if(quartzJob.getSubTask() != null){
+            if (quartzJob.getSubTask() != null) {
                 String[] tasks = quartzJob.getSubTask().split("[,，]");
                 // 执行子任务
 //                quartzJobService.executionSubJob(tasks);
@@ -90,12 +92,12 @@ public class ExecutionJob extends QuartzJobBean {
             log.setSuccess(false);
 //            log.setExceptionDetail(ThrowableUtil.getStackTrace(e));
             // 任务如果失败了则暂停
-            if(quartzJob.getPauseAfterFailure() != null && quartzJob.getPauseAfterFailure()){
+            if (quartzJob.getPauseAfterFailure() != null && quartzJob.getPauseAfterFailure()) {
                 quartzJob.setPaused(false);
                 //更新状态
 //                quartzJobService.updateIsPause(quartzJob);
             }
-            if(quartzJob.getEmail() != null){
+            if (quartzJob.getEmail() != null) {
 //                EmailService emailService = SpringContextHolder.getBean(EmailService.class);
 //                // 邮箱报警
 //                if(StringUtils.isNoneBlank(quartzJob.getEmail())){

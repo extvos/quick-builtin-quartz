@@ -26,7 +26,6 @@ import java.sql.Timestamp;
 
 /**
  * @author Mingcai SHEN
- * 
  */
 @Data
 @TableName("builtin_quartz_jobs")
