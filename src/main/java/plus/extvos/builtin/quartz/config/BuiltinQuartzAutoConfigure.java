@@ -22,16 +22,16 @@ public class BuiltinQuartzAutoConfigure {
     @Bean
     public Docket createQuartzDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("任务调度服务")
-                .apiInfo(new ApiInfoBuilder()
-                        .title("任务调度服务")
-                        .description("Builtin Quartz services for generic use.")
-                        .contact(new Contact("Mingcai SHEN","https://github.com/","archsh@gmail.com"))
-                        .termsOfServiceUrl("https://github.com/quickstart/java-scaffolds/quick-builtin-quartz.git")
-                        .version(getClass().getPackage().getImplementationVersion())
-                        .build())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("plus.extvos.builtin.quartz"))
-                .build();
+            .groupName("任务调度服务")
+            .apiInfo(new ApiInfoBuilder()
+                .title("任务调度服务")
+                .description("Builtin Quartz services for generic use.")
+                .contact(new Contact("Mingcai SHEN", "https://github.com/", "archsh@gmail.com"))
+                .termsOfServiceUrl("https://github.com/quickstart/java-scaffolds/quick-builtin-quartz.git")
+                .version(getClass().getPackage().getImplementationVersion())
+                .build())
+            .select()
+            .apis(RequestHandlerSelectors.basePackage("plus.extvos.builtin.quartz"))
+            .build();
     }
 }

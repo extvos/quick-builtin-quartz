@@ -1,8 +1,6 @@
 package plus.extvos.builtin.quartz.config;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import plus.extvos.builtin.quartz.entity.QuartzJob;
-import plus.extvos.builtin.quartz.entity.QuartzLog;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.slf4j.Logger;
@@ -12,6 +10,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import plus.extvos.builtin.quartz.entity.QuartzJob;
+import plus.extvos.builtin.quartz.entity.QuartzLog;
 
 import javax.sql.DataSource;
 import java.io.Reader;
@@ -38,8 +38,8 @@ public class BuiltinQuartzInitializer implements ApplicationRunner {
         ScriptRunner runner = new ScriptRunner(conn);
         runner.setLogWriter(dataSource.getLogWriter());
         String[] tableNames = new String[]{
-                QuartzJob.class.getAnnotation(TableName.class).value(),
-                QuartzLog.class.getAnnotation(TableName.class).value(),
+            QuartzJob.class.getAnnotation(TableName.class).value(),
+            QuartzLog.class.getAnnotation(TableName.class).value(),
         };
         for (int i = 0; i < tableNames.length; i++) {
             tableNames[i] = "'" + tableNames[i] + "'";

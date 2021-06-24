@@ -15,12 +15,13 @@
  */
 package plus.extvos.builtin.quartz.task;
 
-import plus.extvos.builtin.quartz.annotation.QuartzEnabled;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import plus.extvos.builtin.quartz.annotation.QuartzEnabled;
 
 /**
  * 测试用
+ *
  * @author Mingcai SHEN
  */
 @Slf4j
@@ -28,15 +29,15 @@ import org.springframework.stereotype.Component;
 @QuartzEnabled("测试用")
 public class TestTask {
 
-    public void run(){
+    public void run() {
         log.info("run 执行成功");
     }
 
-    public void run1(String str){
+    public void run1(String str) {
         log.info("run1 执行成功，参数为： {}" + str);
     }
 
-    public void run2(){
+    public void run2() {
         log.info("run2 执行成功");
     }
 }

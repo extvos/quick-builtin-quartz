@@ -16,17 +16,16 @@
 package plus.extvos.builtin.quartz.config;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import plus.extvos.builtin.quartz.mapper.QuartzJobMapper;
-import plus.extvos.builtin.quartz.service.QuartzJobService;
 import lombok.RequiredArgsConstructor;
-import plus.extvos.builtin.quartz.entity.QuartzJob;
-import plus.extvos.builtin.quartz.utils.QuartzManage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import plus.extvos.builtin.quartz.entity.QuartzJob;
+import plus.extvos.builtin.quartz.service.QuartzJobService;
+import plus.extvos.builtin.quartz.utils.QuartzManage;
 
 import java.util.List;
 

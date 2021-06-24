@@ -1,17 +1,16 @@
 package plus.extvos.builtin.quartz.controller;
 
-import plus.extvos.builtin.quartz.mapper.QuartzJobMapper;
+import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import plus.extvos.builtin.quartz.entity.QuartzJob;
 import plus.extvos.builtin.quartz.service.QuartzJobService;
 import plus.extvos.builtin.quartz.utils.QuartzManage;
 import plus.extvos.restlet.QuerySet;
 import plus.extvos.restlet.controller.BaseController;
 import plus.extvos.restlet.exception.RestletException;
-import io.swagger.annotations.Api;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import plus.extvos.builtin.quartz.entity.QuartzJob;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 import java.util.List;
