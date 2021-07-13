@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import plus.extvos.builtin.quartz.entity.QuartzJob;
 import plus.extvos.builtin.quartz.mapper.QuartzJobMapper;
 import plus.extvos.builtin.quartz.service.QuartzJobService;
-import plus.extvos.restlet.exception.RestletException;
+import plus.extvos.common.exception.ResultException;
 import plus.extvos.restlet.service.impl.BaseServiceImpl;
 
 import java.util.UUID;
@@ -24,7 +24,7 @@ public class QuartzJobServiceImpl extends BaseServiceImpl<QuartzJobMapper, Quart
     }
 
     @Override
-    public int insert(QuartzJob entity) throws RestletException {
+    public int insert(QuartzJob entity) throws ResultException {
         entity.setUuid(UUID.randomUUID().toString());
         return super.insert(entity);
     }

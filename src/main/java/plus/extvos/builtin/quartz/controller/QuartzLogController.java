@@ -9,7 +9,7 @@ import plus.extvos.builtin.quartz.entity.QuartzLog;
 import plus.extvos.builtin.quartz.service.QuartzLogService;
 import plus.extvos.restlet.QuerySet;
 import plus.extvos.restlet.controller.BaseController;
-import plus.extvos.restlet.exception.RestletException;
+import plus.extvos.common.exception.ResultException;
 
 import java.io.Serializable;
 
@@ -31,17 +31,17 @@ public class QuartzLogController extends BaseController<QuartzLog, QuartzLogServ
     }
 
     @Override
-    public QuartzLog preInsert(QuartzLog entity) throws RestletException {
-        throw RestletException.forbidden("not allowed to create new record");
+    public QuartzLog preInsert(QuartzLog entity) throws ResultException {
+        throw ResultException.forbidden("not allowed to create new record");
     }
 
     @Override
-    public QuartzLog preUpdate(Serializable id, QuartzLog entity) throws RestletException {
-        throw RestletException.forbidden("not allowed to update record(s)");
+    public QuartzLog preUpdate(Serializable id, QuartzLog entity) throws ResultException {
+        throw ResultException.forbidden("not allowed to update record(s)");
     }
 
     @Override
-    public QuartzLog preUpdate(QuerySet<QuartzLog> qs, QuartzLog entity) throws RestletException {
-        throw RestletException.forbidden("not allowed to update record(s)");
+    public QuartzLog preUpdate(QuerySet<QuartzLog> qs, QuartzLog entity) throws ResultException {
+        throw ResultException.forbidden("not allowed to update record(s)");
     }
 }

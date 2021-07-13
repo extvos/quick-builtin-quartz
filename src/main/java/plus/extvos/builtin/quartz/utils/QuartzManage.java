@@ -20,7 +20,7 @@ import org.quartz.*;
 import org.quartz.impl.triggers.CronTriggerImpl;
 import org.springframework.stereotype.Component;
 import plus.extvos.builtin.quartz.entity.QuartzJob;
-import plus.extvos.restlet.exception.RestletException;
+import plus.extvos.common.exception.ResultException;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -66,7 +66,7 @@ public class QuartzManage {
             }
         } catch (Exception e) {
             log.error("创建定时任务失败", e);
-            throw RestletException.conflict("创建定时任务失败");
+            throw ResultException.conflict("创建定时任务失败");
         }
     }
 
@@ -97,7 +97,7 @@ public class QuartzManage {
             }
         } catch (Exception e) {
             log.error("更新定时任务失败", e);
-            throw RestletException.conflict("更新定时任务失败");
+            throw ResultException.conflict("更新定时任务失败");
         }
 
     }
@@ -114,7 +114,7 @@ public class QuartzManage {
             scheduler.deleteJob(jobKey);
         } catch (Exception e) {
             log.error("删除定时任务失败", e);
-            throw RestletException.conflict("删除定时任务失败");
+            throw ResultException.conflict("删除定时任务失败");
         }
     }
 
@@ -135,7 +135,7 @@ public class QuartzManage {
             scheduler.resumeJob(jobKey);
         } catch (Exception e) {
             log.error("恢复定时任务失败", e);
-            throw RestletException.conflict("恢复定时任务失败");
+            throw ResultException.conflict("恢复定时任务失败");
         }
     }
 
@@ -158,7 +158,7 @@ public class QuartzManage {
             scheduler.triggerJob(jobKey, dataMap);
         } catch (Exception e) {
             log.error("定时任务执行失败", e);
-            throw RestletException.conflict("定时任务执行失败");
+            throw ResultException.conflict("定时任务执行失败");
         }
     }
 
@@ -173,7 +173,7 @@ public class QuartzManage {
             scheduler.pauseJob(jobKey);
         } catch (Exception e) {
             log.error("定时任务暂停失败", e);
-            throw RestletException.conflict("定时任务暂停失败");
+            throw ResultException.conflict("定时任务暂停失败");
         }
     }
 }
