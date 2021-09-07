@@ -27,7 +27,7 @@ public class BuiltinQuartzAutoConfigure {
                 .title("任务调度服务")
                 .description("Builtin Quartz services for generic use.")
                 .contact(new Contact("Mingcai SHEN", "https://github.com/", "archsh@gmail.com"))
-                .termsOfServiceUrl("https://github.com/quickstart/java-scaffolds/quick-builtin-quartz.git")
+                .termsOfServiceUrl("https://github.com/extvos/quick-builtin-quartz.git")
                 .version(getClass().getPackage().getImplementationVersion())
                 .build())
             .select()
