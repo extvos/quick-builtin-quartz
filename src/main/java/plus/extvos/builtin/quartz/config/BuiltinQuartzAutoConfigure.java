@@ -21,7 +21,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 @ComponentScan(basePackages = "plus.extvos.builtin.quartz")
 public class BuiltinQuartzAutoConfigure {
     @Bean
-    @ConditionalOnProperty(prefix = "spring.swagger", name = "enabled", havingValue = "true")
+    @ConditionalOnProperty(prefix = "spring.swagger", name = "disabled", havingValue = "false", matchIfMissing = true)
     public Docket createQuartzDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
             .groupName("任务调度服务")
