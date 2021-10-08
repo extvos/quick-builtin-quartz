@@ -1,6 +1,7 @@
 package plus.extvos.builtin.quartz.config;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,6 +21,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 @ComponentScan(basePackages = "plus.extvos.builtin.quartz")
 public class BuiltinQuartzAutoConfigure {
     @Bean
+    @ConditionalOnProperty(prefix = "spring.swagger", name = "enabled", havingValue = "true")
     public Docket createQuartzDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
             .groupName("任务调度服务")
