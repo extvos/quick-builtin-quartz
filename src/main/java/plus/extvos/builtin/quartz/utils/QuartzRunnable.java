@@ -18,7 +18,7 @@ package plus.extvos.builtin.quartz.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ReflectionUtils;
 import plus.extvos.common.utils.StringUtils;
-import plus.extvos.restlet.utils.SpringContextHolder;
+import plus.extvos.common.utils.SpringContextHolder;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.Callable;

@@ -12,7 +12,7 @@ import plus.extvos.builtin.quartz.annotation.QuartzEnabled;
 import plus.extvos.builtin.quartz.vo.BeanDescriptor;
 import plus.extvos.builtin.quartz.vo.BeanMethod;
 import plus.extvos.builtin.quartz.vo.BeanParameter;
-import plus.extvos.restlet.Result;
+import plus.extvos.common.Result;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

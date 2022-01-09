@@ -22,7 +22,7 @@ import plus.extvos.builtin.quartz.entity.QuartzJob;
 import plus.extvos.builtin.quartz.entity.QuartzLog;
 import plus.extvos.builtin.quartz.mapper.QuartzLogMapper;
 import plus.extvos.builtin.quartz.service.QuartzJobService;
-import plus.extvos.restlet.utils.SpringContextHolder;
+import plus.extvos.common.utils.SpringContextHolder;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;

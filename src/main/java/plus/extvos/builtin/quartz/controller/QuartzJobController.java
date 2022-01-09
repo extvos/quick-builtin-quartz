@@ -10,7 +10,7 @@ import plus.extvos.builtin.quartz.service.QuartzJobService;
 import plus.extvos.builtin.quartz.utils.QuartzManage;
 import plus.extvos.restlet.QuerySet;
 import plus.extvos.restlet.controller.BaseController;
-import plus.extvos.restlet.exception.RestletException;
+import plus.extvos.common.exception.ResultException;
 
 import java.io.Serializable;
 import java.util.List;
@@ -36,28 +36,28 @@ public class QuartzJobController extends BaseController<QuartzJob, QuartzJobServ
     }
 
     @Override
-    public void postInsert(QuartzJob entity) throws RestletException {
+    public void postInsert(QuartzJob entity) throws ResultException {
         quartzManage.addJob(entity);
     }
 
     @Override
-    public void postUpdate(Serializable id, QuartzJob entity) throws RestletException {
+    public void postUpdate(Serializable id, QuartzJob entity) throws ResultException {
 
     }
 
     @Override
-    public void postUpdate(QuerySet<QuartzJob> qs, QuartzJob entity) throws RestletException {
+    public void postUpdate(QuerySet<QuartzJob> qs, QuartzJob entity) throws ResultException {
 
     }
 
     @Override
-    public void preDelete(Serializable id) throws RestletException {
+    public void preDelete(Serializable id) throws ResultException {
         QuartzJob job = myService.selectById(null, id);
         quartzManage.deleteJob(job);
     }
 
     @Override
-    public QuerySet<QuartzJob> preDelete(QuerySet<QuartzJob> qs) throws RestletException {
+    public QuerySet<QuartzJob> preDelete(QuerySet<QuartzJob> qs) throws ResultException {
         List<QuartzJob> jobs = myService.selectByMap(qs);
         jobs.forEach(quartzManage::addJob);
         return qs;

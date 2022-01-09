@@ -1,6 +1,7 @@
 package plus.extvos.builtin.quartz.config;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,14 +21,15 @@ import springfox.documentation.spring.web.plugins.Docket;
 @ComponentScan(basePackages = "plus.extvos.builtin.quartz")
 public class BuiltinQuartzAutoConfigure {
     @Bean
+    @ConditionalOnProperty(prefix = "spring.swagger", name = "disabled", havingValue = "false", matchIfMissing = true)
     public Docket createQuartzDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
             .groupName("任务调度服务")
             .apiInfo(new ApiInfoBuilder()
                 .title("任务调度服务")
                 .description("Builtin Quartz services for generic use.")
-                .contact(new Contact("Mingcai SHEN", "https://github.com/", "archsh@gmail.com"))
-                .termsOfServiceUrl("https://github.com/quickstart/java-scaffolds/quick-builtin-quartz.git")
+                .contact(new Contact("Mingcai SHEN", "https://github.com/archsh/", "archsh@gmail.com"))
+                .termsOfServiceUrl("https://github.com/extvos/quickstart/raw/develop/LICENSE")
                 .version(getClass().getPackage().getImplementationVersion())
                 .build())
             .select()
