@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS builtin_quartz_jobs (
   PRIMARY KEY (id),
   CONSTRAINT builtin_quartz_jobs_UN UNIQUE  (uuid)
 )   ;
-
+COMMENT ON TABLE builtin_role_permissions IS '内置定时任务';
 ALTER SEQUENCE builtin_quartz_jobs_seq RESTART WITH 1;
 
 
@@ -43,5 +43,5 @@ CREATE TABLE IF NOT EXISTS builtin_quartz_logs (
   created timestamp(0) DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (id)
 )   ;
-
+COMMENT ON TABLE builtin_role_permissions IS '内置定时任务日志';
 ALTER SEQUENCE builtin_quartz_logs_seq RESTART WITH 1;
