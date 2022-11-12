@@ -23,6 +23,7 @@ import plus.extvos.builtin.quartz.entity.QuartzLog;
 import plus.extvos.builtin.quartz.mapper.QuartzLogMapper;
 import plus.extvos.builtin.quartz.service.QuartzJobService;
 import plus.extvos.common.utils.SpringContextHolder;
+import plus.extvos.common.utils.ThrowableUtil;
 
 import java.util.concurrent.Future;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -38,7 +39,7 @@ public class ExecutionJob extends QuartzJobBean {
     /**
      * 该处仅供参考
      */
-    private final static ThreadPoolExecutor EXECUTOR = null;// = ThreadPoolExecutorUtil.getPoll();
+    private final static ThreadPoolExecutor EXECUTOR = ThreadPoolExecutorUtil.newFixedThreadPool(5);
 
     @Override
     public void executeInternal(JobExecutionContext context) {
@@ -50,13 +51,13 @@ public class ExecutionJob extends QuartzJobBean {
 
         String uuid = quartzJob.getUuid();
 
-        QuartzLog log = new QuartzLog();
-        log.setJobName(quartzJob.getJobName());
-        log.setBeanName(quartzJob.getBeanName());
-        log.setMethodName(quartzJob.getMethodName());
-        log.setParams(quartzJob.getParams());
+        QuartzLog quartzLog = new QuartzLog();
+        quartzLog.setJobName(quartzJob.getJobName());
+        quartzLog.setBeanName(quartzJob.getBeanName());
+        quartzLog.setMethodName(quartzJob.getMethodName());
+        quartzLog.setParams(quartzJob.getParams());
         long startTime = System.currentTimeMillis();
-        log.setCronExpression(quartzJob.getCronExpression());
+        quartzLog.setCronExpression(quartzJob.getCronExpression());
         try {
             // 执行任务
             System.out.println("--------------------------------------------------------------");
@@ -66,12 +67,12 @@ public class ExecutionJob extends QuartzJobBean {
             Future<?> future = EXECUTOR.submit(task);
             future.get();
             long times = System.currentTimeMillis() - startTime;
-            log.setDuration(times);
+            quartzLog.setDuration(times);
 //            if(StringUtils.isNotBlank(uuid)) {
 //                redisUtils.set(uuid, true);
 //            }
             // 任务状态
-            log.setSuccess(true);
+            quartzLog.setSuccess(true);
             System.out.println("任务执行完毕，任务名称：" + quartzJob.getJobName() + ", 执行时间：" + times + "毫秒");
             System.out.println("--------------------------------------------------------------");
             // 判断是否存在子任务
@@ -87,10 +88,12 @@ public class ExecutionJob extends QuartzJobBean {
             System.out.println("任务执行失败，任务名称：" + quartzJob.getJobName());
             System.out.println("--------------------------------------------------------------");
             long times = System.currentTimeMillis() - startTime;
-            log.setDuration(times);
+//            e.printStackTrace();
+//            log.setExceptionDetail(e.getMessage());
+            quartzLog.setDuration(times);
             // 任务状态 0：成功 1：失败
-            log.setSuccess(false);
-//            log.setExceptionDetail(ThrowableUtil.getStackTrace(e));
+            quartzLog.setSuccess(false);
+            quartzLog.setExceptionDetail(ThrowableUtil.getStackTrace(e));
             // 任务如果失败了则暂停
             if (quartzJob.getPauseAfterFailure() != null && quartzJob.getPauseAfterFailure()) {
                 quartzJob.setPaused(false);
@@ -106,7 +109,8 @@ public class ExecutionJob extends QuartzJobBean {
 //                }
             }
         } finally {
-            quartzLogMapper.insert(log);
+            quartzLog.setId(null);
+            quartzLogMapper.insert(quartzLog);
         }
     }
 

@@ -15,8 +15,7 @@
  */
 package plus.extvos.builtin.quartz.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -33,6 +32,8 @@ public class QuartzJob implements Serializable {
 
     public static final String JOB_KEY = "JOB_KEY";
 
+    @TableId(type = IdType.AUTO)
+    @TableField(fill = FieldFill.INSERT)
     private Long id;
 
     @ApiModelProperty(value = "用于子任务唯一标识", hidden = true)

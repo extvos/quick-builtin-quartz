@@ -1,7 +1,7 @@
 
 -- SQLINES DEMO *** z_jobs 结构
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
-CREATE SEQUENCE builtin_quartz_jobs_seq;
+CREATE SEQUENCE IF NOT EXISTS builtin_quartz_jobs_seq;
 
 CREATE TABLE IF NOT EXISTS builtin_quartz_jobs (
   id bigint NOT NULL DEFAULT NEXTVAL ('builtin_quartz_jobs_seq') ,
@@ -11,24 +11,24 @@ CREATE TABLE IF NOT EXISTS builtin_quartz_jobs (
   method_name varchar(100) NOT NULL ,
   params varchar(256) DEFAULT NULL ,
   cron_expression varchar(64) DEFAULT NULL ,
-  paused smallint NOT NULL ,
+  paused boolean NOT NULL ,
   person_in_charge varchar(32) DEFAULT NULL ,
   email varchar(64) DEFAULT NULL ,
   sub_task varchar(100) DEFAULT NULL ,
-  pause_after_failure smallint DEFAULT NULL ,
+  pause_after_failure boolean DEFAULT NULL ,
   description varchar(128) DEFAULT NULL ,
   created timestamp(0) DEFAULT CURRENT_TIMESTAMP ,
   updated timestamp(0) DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (id),
   CONSTRAINT builtin_quartz_jobs_UN UNIQUE  (uuid)
 )   ;
-COMMENT ON TABLE builtin_role_permissions IS '内置定时任务';
+COMMENT ON TABLE builtin_quartz_jobs IS '内置定时任务';
 ALTER SEQUENCE builtin_quartz_jobs_seq RESTART WITH 1;
 
 
 -- SQLINES DEMO *** z_logs 结构
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
-CREATE SEQUENCE builtin_quartz_logs_seq;
+CREATE SEQUENCE IF NOT EXISTS builtin_quartz_logs_seq;
 
 CREATE TABLE IF NOT EXISTS builtin_quartz_logs (
   id bigint NOT NULL DEFAULT NEXTVAL ('builtin_quartz_logs_seq') ,
@@ -37,11 +37,11 @@ CREATE TABLE IF NOT EXISTS builtin_quartz_logs (
   method_name varchar(100) NOT NULL ,
   params varchar(256) DEFAULT NULL ,
   cron_expression varchar(64) DEFAULT NULL ,
-  success smallint NOT NULL ,
+  success boolean NOT NULL ,
   exception_detail text ,
   duration bigint NOT NULL DEFAULT '0' ,
   created timestamp(0) DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (id)
 )   ;
-COMMENT ON TABLE builtin_role_permissions IS '内置定时任务日志';
+COMMENT ON TABLE builtin_quartz_logs IS '内置定时任务日志';
 ALTER SEQUENCE builtin_quartz_logs_seq RESTART WITH 1;

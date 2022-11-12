@@ -15,7 +15,7 @@
  */
 package plus.extvos.builtin.quartz.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -30,6 +30,8 @@ import java.sql.Timestamp;
 public class QuartzLog implements Serializable {
 
     @ApiModelProperty(value = "ID", hidden = true)
+    @TableId(type = IdType.AUTO)
+    @TableField(fill = FieldFill.INSERT)
     private Long id;
 
     @ApiModelProperty(value = "任务名称", hidden = true)
