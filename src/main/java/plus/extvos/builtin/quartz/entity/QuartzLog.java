@@ -29,7 +29,7 @@ import java.sql.Timestamp;
 @TableName("builtin_quartz_logs")
 public class QuartzLog implements Serializable {
 
-    @ApiModelProperty(value = "ID", hidden = true)
+    @ApiModelProperty(value = "ID", hidden = true, example = "0")
     @TableId(type = IdType.AUTO)
     @TableField(fill = FieldFill.INSERT)
     private Long id;
@@ -55,7 +55,7 @@ public class QuartzLog implements Serializable {
     @ApiModelProperty(value = "异常详情", hidden = true)
     private String exceptionDetail;
 
-    @ApiModelProperty(value = "执行耗时", hidden = true)
+    @ApiModelProperty(value = "执行耗时", hidden = true, example = "0")
     private Long duration;
 
     @ApiModelProperty(value = "创建时间", hidden = true)
